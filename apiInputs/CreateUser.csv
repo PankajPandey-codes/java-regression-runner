@@ -1,0 +1,2 @@
+testScenarioNumber,testObjective,urlParameter,expectedResponseCode
+1,Create a new user with valid details,,201

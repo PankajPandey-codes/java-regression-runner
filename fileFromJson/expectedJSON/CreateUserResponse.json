@@ -1,0 +1,20 @@
+[
+  {
+    "apiName": "CreateUser1",
+    "expected": {
+      "data": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "role": "standard",
+        "status": "ACTIVE"
+      },
+      "errorResponse": null
+    },
+    "commonIgnore": [
+      "id",
+      "createdOn",
+      "lastModifiedOn"
+    ]
+  }
+]

@@ -1,0 +1,2 @@
+#,apiName,apiMethod,apiPath,apiInputsFile,toBeValidated,Module,fileType,payloadJSON,expectedJSON,consentPerson,scenario,mysql,BusinessFunction
+1,CreateUser,POST,/api/v1/users,CreateUser.csv,y,User Management,json,CreateUserRequest.json,CreateUserResponse.json,Pankaj,y,n,User Onboarding

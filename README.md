@@ -73,6 +73,21 @@ build.gradle, settings.gradle, HEADER        # build config
 check_run_status.sh, run_overnight.sh        # operational scripts
 deploy/systemd/                              # service/timer templates
 runner.env.example                           # config reference
+apisToBeValidated/                           # sample manifest (what APIs to test)
+apiInputs/                                   # sample per-API test parameters
+fileFromJson/payloadJSON/                    # sample request payloads
+fileFromJson/expectedJSON/                   # sample expected responses
+```
+
+## Sample test case
+
+`apisToBeValidated/APIsToBeValidated_Sample.csv` wires together one fully
+worked example (`CreateUser`, a fictional `POST /api/v1/users` call) across
+all four file types the manifest format uses — manifest row, per-API test
+parameters, request payload, expected response. Validate it with:
+
+```bash
+./gradlew run --args="--projectRoot=. --mode=dry-run --manifests=APIsToBeValidated_Sample.csv"
 ```
 
 ## Test coverage
