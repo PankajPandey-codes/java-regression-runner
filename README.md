@@ -79,12 +79,23 @@ fileFromJson/payloadJSON/                    # sample request payloads
 fileFromJson/expectedJSON/                   # sample expected responses
 ```
 
-## Sample test case
+## Sample test cases
 
-`apisToBeValidated/APIsToBeValidated_Sample.csv` wires together one fully
-worked example (`CreateUser`, a fictional `POST /api/v1/users` call) across
-all four file types the manifest format uses — manifest row, per-API test
-parameters, request payload, expected response. Validate it with:
+`apisToBeValidated/APIsToBeValidated_Sample.csv` wires together two fully
+worked, fictional examples across all four file types the manifest format
+uses — manifest row, per-API test parameters, request payload, expected
+response:
+
+- **`CreateUser`** — a single-step `POST /api/v1/users` call, showing the
+  plain request/expected-response shape with `commonIgnore` fields.
+- **`OrderLifecycle`** — a three-step chained scenario showing the other
+  mechanics: an HTTP step tagged with a `stepId`, a `mysqlQuery` DB step
+  referencing that step's captured response via `{{createOrder.response.id}}`,
+  a second HTTP step with the same chaining token embedded directly in
+  `apiPath`, and a declarative `assertions[]` block (`equals`, `exists`)
+  instead of a plain expected body.
+
+Validate either with:
 
 ```bash
 ./gradlew run --args="--projectRoot=. --mode=dry-run --manifests=APIsToBeValidated_Sample.csv"

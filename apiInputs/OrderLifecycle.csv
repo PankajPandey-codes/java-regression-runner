@@ -1,0 +1,2 @@
+testScenarioNumber,testObjective,urlParameter,expectedResponseCode
+1,Create an order then verify it transitions to CONFIRMED and is recorded in the database,,200

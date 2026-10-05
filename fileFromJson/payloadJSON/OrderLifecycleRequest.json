@@ -1,0 +1,30 @@
+[
+  {
+    "apiName": "CreateOrder",
+    "apiMethod": "POST",
+    "apiPath": "/api/v1/orders",
+    "payload": {
+      "payload": {
+        "customerId": "CUST-1001",
+        "items": [
+          { "sku": "WIDGET-1", "quantity": 2 }
+        ]
+      }
+    },
+    "TestStresserFlg": "N",
+    "stepId": "createOrder"
+  },
+  {
+    "queryName": "CheckOrderPersisted",
+    "mysqlQuery": "select status from orders where id = {{createOrder.response.id}}",
+    "stepId": "checkOrderInDb"
+  },
+  {
+    "apiName": "GetOrder",
+    "apiMethod": "GET",
+    "apiPath": "/api/v1/orders/{{createOrder.response.id}}",
+    "payload": [],
+    "TestStresserFlg": "N",
+    "stepId": "getOrder"
+  }
+]
