@@ -1,0 +1,24 @@
+[Unit]
+Description=Java Regression Runner Java 17 Candidate
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=fineract
+Group=fineract
+WorkingDirectory=/opt/fineract-api-test-cases/java-regression-runner
+Environment=JR_RESPONSE_CHAINING_ENABLED=true
+Environment=JR_JAVA_BIN=/usr/bin/java
+EnvironmentFile=/etc/fineract/java-regression-runner-java17.env
+ExecStart=/usr/bin/flock /opt/fineract-api-test-cases/regression-runner.lock ${JR_JAVA_BIN} -jar /opt/fineract-api-test-cases/java-regression-runner/build/libs/java-regression-runner-0.1.0-all.jar --projectRoot=/opt/fineract-api-test-cases --mode=execute --threads=${JR_THREADS} --partialReportIntervalSeconds=${JR_PARTIAL_REPORT_INTERVAL_SECONDS} --connectTimeoutMs=${JR_CONNECT_TIMEOUT_MS} --readTimeoutMs=${JR_READ_TIMEOUT_MS} --failOnTestFailures=${JR_FAIL_ON_TEST_FAILURES} --responseChaining.enabled=${JR_RESPONSE_CHAINING_ENABLED} --protocol=${JR_PROTOCOL} --server=${JR_SERVER} --tenant=${JR_TENANT} --username=${JR_USERNAME} --password=${JR_PASSWORD} --tokenPath=${JR_TOKEN_PATH}
+TimeoutStartSec=12h
+RuntimeMaxSec=12h
+TimeoutStopSec=5m
+KillSignal=SIGTERM
+Restart=no
+StandardOutput=append:/opt/fineract-api-test-cases/java-regression-runner/run.log
+StandardError=append:/opt/fineract-api-test-cases/java-regression-runner/run.log
+
+[Install]
+WantedBy=multi-user.target

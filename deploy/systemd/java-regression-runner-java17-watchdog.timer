@@ -1,0 +1,10 @@
+[Unit]
+Description=Watchdog for Java Regression Runner Java 17 Candidate
+
+[Timer]
+OnCalendar=*-*-* 07:00:00
+Persistent=true
+Unit=java-regression-runner-java17-watchdog.service
+
+[Install]
+WantedBy=timers.target

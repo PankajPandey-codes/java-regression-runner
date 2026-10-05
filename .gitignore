@@ -1,0 +1,11 @@
+build/
+.gradle/
+*.class
+results/
+jsonOutput/
+jsonPayload/
+output/
+runner.env
+.DS_Store
+.idea/
+.vscode/
