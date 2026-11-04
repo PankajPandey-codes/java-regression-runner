@@ -1,0 +1,16 @@
+[
+  {
+    "apiName": "CreateUser1",
+    "apiMethod": "POST",
+    "apiPath": "/api/v1/users",
+    "payload": {
+      "payload": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "role": "standard"
+      }
+    },
+    "TestStresserFlg": "N"
+  }
+]

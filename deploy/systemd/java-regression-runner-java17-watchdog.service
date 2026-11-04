@@ -1,0 +1,15 @@
+[Unit]
+Description=Java Regression Runner Java 17 Candidate Watchdog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=fineract
+Group=fineract
+WorkingDirectory=/opt/fineract-api-test-cases/java-regression-runner
+EnvironmentFile=/etc/fineract/java-regression-runner-java17.env
+ExecStart=/usr/bin/env MAX_AGE_MINUTES=${JR_WATCHDOG_MAX_AGE_MINUTES} /opt/fineract-api-test-cases/java-regression-runner/check_run_status.sh
+
+[Install]
+WantedBy=multi-user.target

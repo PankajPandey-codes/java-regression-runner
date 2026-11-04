@@ -1,0 +1,43 @@
+[
+  {
+    "apiName": "CreateOrder",
+    "expected": {
+      "data": {
+        "customerId": "CUST-1001",
+        "status": "PENDING"
+      },
+      "errorResponse": null
+    },
+    "commonIgnore": [
+      "id",
+      "createdOn",
+      "lastModifiedOn"
+    ]
+  },
+  {
+    "queryName": "CheckOrderPersisted",
+    "expected": {
+      "data": {
+        "status": "PENDING"
+      }
+    }
+  },
+  {
+    "apiName": "GetOrder",
+    "expected": {},
+    "assertions": [
+      {
+        "name": "order-status-is-confirmed",
+        "actualPath": "status",
+        "expectedPath": "status",
+        "type": "string",
+        "operator": "equals"
+      },
+      {
+        "name": "order-has-customer-id",
+        "actualPath": "customerId",
+        "operator": "exists"
+      }
+    ]
+  }
+]

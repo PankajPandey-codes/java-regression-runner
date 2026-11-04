@@ -1,0 +1,10 @@
+[Unit]
+Description=Nightly Java Regression Runner Java 17 Candidate
+
+[Timer]
+OnCalendar=*-*-* 01:00:00
+Persistent=true
+Unit=java-regression-runner-java17.service
+
+[Install]
+WantedBy=timers.target
