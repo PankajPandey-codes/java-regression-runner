@@ -5,11 +5,11 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-User=fineract
-Group=fineract
-WorkingDirectory=/opt/fineract-api-test-cases/java-regression-runner
-EnvironmentFile=/etc/fineract/java-regression-runner-java17.env
-ExecStart=/usr/bin/env MAX_AGE_MINUTES=${JR_WATCHDOG_MAX_AGE_MINUTES} /opt/fineract-api-test-cases/java-regression-runner/check_run_status.sh
+User=runner
+Group=runner
+WorkingDirectory=/opt/api-regression/java-regression-runner
+EnvironmentFile=/etc/regression-runner/java-regression-runner-java17.env
+ExecStart=/usr/bin/env MAX_AGE_MINUTES=${JR_WATCHDOG_MAX_AGE_MINUTES} /opt/api-regression/java-regression-runner/check_run_status.sh
 
 [Install]
 WantedBy=multi-user.target
